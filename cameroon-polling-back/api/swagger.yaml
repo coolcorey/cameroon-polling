@@ -1,0 +1,747 @@
+---
+swagger: "2.0"
+info:
+  description: "Cameroon Polling App"
+  version: "1.0.0"
+  title: "Cameroon Polling"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "coolcorey13755@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:8090"
+basePath: "/v2"
+tags:
+- name: "poll"
+  description: "Everything to do with polls"
+- name: "question"
+  description: "Everything to do with poll questions"
+- name: "choice"
+  description: "Everything to do with question choices"
+- name: "answer"
+  description: "Everything to do with question answers"
+- name: "user"
+  description: "Operations about user"
+schemes:
+- "http"
+paths:
+  /poll:
+    post:
+      tags:
+      - "poll"
+      summary: "Add a new poll"
+      description: ""
+      operationId: "addPoll"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Poll object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Poll"
+      responses:
+        405:
+          description: "Invalid input"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+      x-swagger-router-controller: "Poll"
+    put:
+      tags:
+      - "poll"
+      summary: "Update an existing poll"
+      description: ""
+      operationId: "updatePoll"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Poll object that needs to be updated"
+        required: true
+        schema:
+          $ref: "#/definitions/Poll"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Poll not found"
+        405:
+          description: "Validation exception"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+      x-swagger-router-controller: "Poll"
+  /poll/{pollId}:
+    get:
+      tags:
+      - "poll"
+      summary: "Find poll by ID"
+      description: "Returns a single poll"
+      operationId: "getPollById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "pollId"
+        in: "path"
+        description: "ID of poll to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Poll"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Poll not found"
+      security:
+      - api_key: []
+      x-swagger-router-controller: "Poll"
+    delete:
+      tags:
+      - "poll"
+      summary: "Deletes a poll"
+      description: ""
+      operationId: "deletePoll"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "pollId"
+        in: "path"
+        description: "Poll id to delete"
+        required: true
+        type: "string"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Poll not found"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+      x-swagger-router-controller: "Poll"
+  /poll/{pollId}/fullPoll:
+    get:
+      tags:
+      - "poll"
+      summary: "Find full poll by ID"
+      description: "Returns a single polls full data"
+      operationId: "getFullPollById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "pollId"
+        in: "path"
+        description: "ID of poll to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Poll not found"
+      security:
+      - api_key: []
+      x-swagger-router-controller: "Poll"
+  /question:
+    post:
+      tags:
+      - "question"
+      summary: "Add a new question"
+      description: ""
+      operationId: "addQuestion"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Question object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Question"
+      responses:
+        405:
+          description: "Invalid input"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+      x-swagger-router-controller: "Question"
+    put:
+      tags:
+      - "question"
+      summary: "Update an existing question"
+      description: ""
+      operationId: "updateQuestion"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Question object that needs to be updated"
+        required: true
+        schema:
+          $ref: "#/definitions/Question"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Question not found"
+        405:
+          description: "Validation exception"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+      x-swagger-router-controller: "Question"
+  /question/{questionId}:
+    get:
+      tags:
+      - "question"
+      summary: "Find question by ID"
+      description: "Returns a single question"
+      operationId: "getQuestionById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "questionId"
+        in: "path"
+        description: "ID of question to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Question"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Question not found"
+      security:
+      - api_key: []
+      x-swagger-router-controller: "Question"
+    delete:
+      tags:
+      - "question"
+      summary: "Deletes a question"
+      description: ""
+      operationId: "deleteQuestion"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "questionId"
+        in: "path"
+        description: "Question id to delete"
+        required: true
+        type: "string"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Question not found"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+      x-swagger-router-controller: "Question"
+  /choice:
+    post:
+      tags:
+      - "choice"
+      summary: "Add a new choice"
+      description: ""
+      operationId: "addChoice"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Choice object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Choice"
+      responses:
+        405:
+          description: "Invalid input"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+      x-swagger-router-controller: "Choice"
+    put:
+      tags:
+      - "choice"
+      summary: "Update an existing choice"
+      description: ""
+      operationId: "updateChoice"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Choice object that needs to be updated"
+        required: true
+        schema:
+          $ref: "#/definitions/Choice"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Choice not found"
+        405:
+          description: "Validation exception"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+      x-swagger-router-controller: "Choice"
+  /choice/{choiceId}:
+    get:
+      tags:
+      - "choice"
+      summary: "Find choice by ID"
+      description: "Returns a single choice"
+      operationId: "getChoiceById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "choiceId"
+        in: "path"
+        description: "ID of choice to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Choice"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Choice not found"
+      security:
+      - api_key: []
+      x-swagger-router-controller: "Choice"
+    delete:
+      tags:
+      - "choice"
+      summary: "Deletes a choice"
+      description: ""
+      operationId: "deleteChoice"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "choiceId"
+        in: "path"
+        description: "Choice id to delete"
+        required: true
+        type: "string"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Choice not found"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+      x-swagger-router-controller: "Choice"
+  /answer:
+    post:
+      tags:
+      - "answer"
+      summary: "Add a new answer"
+      description: ""
+      operationId: "addAnswer"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Answer object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Answer"
+      responses:
+        405:
+          description: "Invalid input"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+      x-swagger-router-controller: "Answer"
+    put:
+      tags:
+      - "answer"
+      summary: "Update an existing answer"
+      description: ""
+      operationId: "updateAnswer"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Answer object that needs to be updated"
+        required: true
+        schema:
+          $ref: "#/definitions/Answer"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Answer not found"
+        405:
+          description: "Validation exception"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+      x-swagger-router-controller: "Answer"
+  /answer/{answerId}:
+    get:
+      tags:
+      - "answer"
+      summary: "Find answer by ID"
+      description: "Returns a single answer"
+      operationId: "getAnswerById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "answerId"
+        in: "path"
+        description: "ID of answer to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Answer"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Answer not found"
+      security:
+      - api_key: []
+      x-swagger-router-controller: "Answer"
+    delete:
+      tags:
+      - "answer"
+      summary: "Deletes a answer"
+      description: ""
+      operationId: "deleteAnswer"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "answerId"
+        in: "path"
+        description: "Answer id to delete"
+        required: true
+        type: "string"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Answer not found"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+      x-swagger-router-controller: "Answer"
+  /user:
+    post:
+      tags:
+      - "user"
+      summary: "Create user"
+      description: "This can only be done by the logged in user."
+      operationId: "createUser"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created user object"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        default:
+          description: "successful operation"
+      x-swagger-router-controller: "User"
+  /user/login:
+    get:
+      tags:
+      - "user"
+      summary: "Logs user into the system"
+      description: ""
+      operationId: "loginUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "query"
+        description: "The user name for login"
+        required: true
+        type: "string"
+      - name: "password"
+        in: "query"
+        description: "The password for login in clear text"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+          headers:
+            X-Rate-Limit:
+              type: "integer"
+              format: "int32"
+              description: "calls per hour allowed by the user"
+            X-Expires-After:
+              type: "string"
+              format: "date-time"
+              description: "date in UTC when token expires"
+        400:
+          description: "Invalid username/password supplied"
+      x-swagger-router-controller: "User"
+  /user/logout:
+    get:
+      tags:
+      - "user"
+      summary: "Logs out current logged in user session"
+      description: ""
+      operationId: "logoutUser"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        default:
+          description: "successful operation"
+      x-swagger-router-controller: "User"
+  /user/{username}:
+    get:
+      tags:
+      - "user"
+      summary: "Get user by user name"
+      description: ""
+      operationId: "getUserByName"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "The name that needs to be fetched. Use user1 for testing. "
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/User"
+        400:
+          description: "Invalid username supplied"
+        404:
+          description: "User not found"
+      x-swagger-router-controller: "User"
+    put:
+      tags:
+      - "user"
+      summary: "Updated user"
+      description: "This can only be done by the logged in user."
+      operationId: "updateUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "name that need to be updated"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Updated user object"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        400:
+          description: "Invalid user supplied"
+        404:
+          description: "User not found"
+      x-swagger-router-controller: "User"
+    delete:
+      tags:
+      - "user"
+      summary: "Delete user"
+      description: "This can only be done by the logged in user."
+      operationId: "deleteUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "The name that needs to be deleted"
+        required: true
+        type: "string"
+      responses:
+        400:
+          description: "Invalid username supplied"
+        404:
+          description: "User not found"
+      x-swagger-router-controller: "User"
+securityDefinitions:
+  petstore_auth:
+    type: "oauth2"
+    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:pets: "modify pets in your account"
+      read:pets: "read your pets"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      username:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      phone:
+        type: "string"
+      created:
+        type: "string"
+        format: "date-time"
+      updated:
+        type: "string"
+        format: "date-time"
+  Poll:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      title:
+        type: "string"
+      created:
+        type: "string"
+        format: "date-time"
+      updated:
+        type: "string"
+        format: "date-time"
+  Question:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      pollId:
+        type: "string"
+      text:
+        type: "string"
+      description:
+        type: "string"
+      sources:
+        type: "array"
+        items:
+          type: "string"
+      created:
+        type: "string"
+        format: "date-time"
+      updated:
+        type: "string"
+        format: "date-time"
+  Choice:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      pollId:
+        type: "string"
+      questionId:
+        type: "string"
+      text:
+        type: "string"
+      description:
+        type: "string"
+      sources:
+        type: "array"
+        items:
+          type: "string"
+      created:
+        type: "string"
+        format: "date-time"
+      updated:
+        type: "string"
+        format: "date-time"
+  Answer:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      userId:
+        type: "string"
+      pollId:
+        type: "string"
+      questionId:
+        type: "string"
+      choiceId:
+        type: "string"
+      created:
+        type: "string"
+        format: "date-time"
+      updated:
+        type: "string"
+        format: "date-time"

@@ -1,0 +1,49 @@
+2017-09-11T13:37:14.378809000 40.041219s notice: Recursively removing directory /Users/corey/Desktop/apps/git/cameroon-polling/rethinkdb_data/tmp
+2017-09-11T13:37:14.381465000 40.043879s notice: Initializing directory /Users/corey/Desktop/apps/git/cameroon-polling/rethinkdb_data
+2017-09-11T13:37:14.381621000 40.044030s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/Users/corey/Desktop/apps/git/cameroon-polling/rethinkdb_data' did not already exist or is empty.)
+2017-09-11T13:37:14.381658000 40.044067s notice: Running rethinkdb 2.3.5 (CLANG 8.0.0 (clang-800.0.38))...
+2017-09-11T13:37:14.388223000 40.050633s notice: Running on Darwin 16.7.0 x86_64
+2017-09-11T13:37:14.388257000 40.050666s notice: Loading data from directory /Users/corey/Desktop/apps/git/cameroon-polling/rethinkdb_data
+2017-09-11T13:37:14.503608000 40.166017s info: Automatically using cache size of 1729 MB
+2017-09-11T13:37:14.504039000 40.166448s notice: Listening for intracluster connections on port 29015
+2017-09-11T13:37:14.505850000 40.168259s notice: Listening for client driver connections on port 28015
+2017-09-11T13:37:14.505979000 40.168388s notice: Listening for administrative HTTP connections on port 8080
+2017-09-11T13:37:14.505984000 40.168393s notice: Listening on cluster addresses: 127.0.0.1, ::1
+2017-09-11T13:37:14.505987000 40.168396s notice: Listening on driver addresses: 127.0.0.1, ::1
+2017-09-11T13:37:14.505989000 40.168398s notice: Listening on http addresses: 127.0.0.1, ::1
+2017-09-11T13:37:14.505992000 40.168401s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2017-09-11T13:37:14.505995000 40.168404s notice: Server ready, "Coreys_MacBook_Pro_local_fui" 54c77c67-6fc0-4c72-a3bd-f762b83756ba
+2017-09-11T13:37:14.731764000 40.394173s notice: A newer version of the RethinkDB server is available: 2.3.6. You can read the changelog at <https://github.com/rethinkdb/rethinkdb/releases>.
+2017-09-11T13:41:11.070375000 276.738578s notice: Server got SIGINT from pid 283, uid 501; shutting down...
+2017-09-11T13:41:11.070629000 276.738831s notice: Shutting down client connections...
+2017-09-11T13:41:11.070738000 276.738940s notice: All client connections closed.
+2017-09-11T13:41:11.070744000 276.738946s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-09-11T13:41:11.073583000 276.741786s notice: Storage engine shut down.
+2017-09-11T13:43:32.480348000 40.028947s notice: Running rethinkdb 2.3.5 (CLANG 8.0.0 (clang-800.0.38))...
+2017-09-11T13:43:32.486656000 40.035249s notice: Running on Darwin 16.7.0 x86_64
+2017-09-11T13:43:32.486692000 40.035285s notice: Loading data from directory /Users/corey/Desktop/apps/git/cameroon-polling/rethinkdb_data
+2017-09-11T13:43:32.522614000 40.071207s info: Automatically using cache size of 2213 MB
+2017-09-11T13:43:32.523092000 40.071685s notice: Listening for intracluster connections on port 29015
+2017-09-11T13:43:32.524233000 40.072826s notice: Listening for client driver connections on port 28015
+2017-09-11T13:43:32.524331000 40.072923s notice: Listening for administrative HTTP connections on port 8070
+2017-09-11T13:43:32.524332000 40.072925s notice: Listening on cluster addresses: 127.0.0.1, ::1
+2017-09-11T13:43:32.524335000 40.072927s notice: Listening on driver addresses: 127.0.0.1, ::1
+2017-09-11T13:43:32.524337000 40.072929s notice: Listening on http addresses: 127.0.0.1, ::1
+2017-09-11T13:43:32.524340000 40.072932s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2017-09-11T13:43:32.524343000 40.072936s notice: Server ready, "Coreys_MacBook_Pro_local_fui" 54c77c67-6fc0-4c72-a3bd-f762b83756ba
+2017-09-11T13:43:32.748295000 40.296889s notice: A newer version of the RethinkDB server is available: 2.3.6. You can read the changelog at <https://github.com/rethinkdb/rethinkdb/releases>.
+2017-09-11T15:15:52.798124000 5072.154095s info: Table 8bfd1520-8b20-4b51-9543-bc126a901a41: Starting a new Raft election for term 1.
+2017-09-11T15:15:52.798339000 5072.154310s info: Table 8bfd1520-8b20-4b51-9543-bc126a901a41: Added replica on this server.
+2017-09-11T15:15:52.818200000 5072.174171s info: Table 8bfd1520-8b20-4b51-9543-bc126a901a41: This server is Raft leader for term 1. Latest log index is 0.
+2017-09-11T17:20:19.437599000 10514.910755s info: Table bc8d9516-be60-4a3d-8359-2571576b0a79: Starting a new Raft election for term 1.
+2017-09-11T17:20:19.437799000 10514.910955s info: Table bc8d9516-be60-4a3d-8359-2571576b0a79: Added replica on this server.
+2017-09-11T17:20:19.459436000 10514.932591s info: Table bc8d9516-be60-4a3d-8359-2571576b0a79: This server is Raft leader for term 1. Latest log index is 0.
+2017-09-11T17:20:24.301402000 10519.774714s info: Table c0c49eb5-857c-4578-bb79-3fac815edf4b: Starting a new Raft election for term 1.
+2017-09-11T17:20:24.301539000 10519.774851s info: Table c0c49eb5-857c-4578-bb79-3fac815edf4b: Added replica on this server.
+2017-09-11T17:20:24.321674000 10519.794986s info: Table c0c49eb5-857c-4578-bb79-3fac815edf4b: This server is Raft leader for term 1. Latest log index is 0.
+2017-09-14T14:03:14.484336000 95282.054630s info: Table 2c79aed9-9128-4b5c-a63b-70fab563a7a5: Starting a new Raft election for term 1.
+2017-09-14T14:03:14.484560000 95282.054850s info: Table 2c79aed9-9128-4b5c-a63b-70fab563a7a5: Added replica on this server.
+2017-09-14T14:03:14.505056000 95282.075346s info: Table 2c79aed9-9128-4b5c-a63b-70fab563a7a5: This server is Raft leader for term 1. Latest log index is 0.
+2017-09-19T10:12:50.855816000 312582.318031s info: Table c12911cf-065e-481d-b22e-96d615dda9f7: Starting a new Raft election for term 1.
+2017-09-19T10:12:50.856765000 312582.318978s info: Table c12911cf-065e-481d-b22e-96d615dda9f7: Added replica on this server.
+2017-09-19T10:12:50.876202000 312582.338414s info: Table c12911cf-065e-481d-b22e-96d615dda9f7: This server is Raft leader for term 1. Latest log index is 0.
