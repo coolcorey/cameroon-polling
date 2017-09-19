@@ -1,7 +1,7 @@
 import auth0 from 'auth0-js'
 //import { AUTH_CONFIG } from './auth0-variables'
-import EventEmitter from 'EventEmitter'
 import router from './router'
+import Vue from 'vue'
 
 var AUTH_CONFIG = {
   clientId: '-O6vPaDfg14Soa0gymp1voJNt2LGpfJx',
@@ -12,7 +12,7 @@ var AUTH_CONFIG = {
 
 export default class AuthService {
   authenticated = this.isAuthenticated()
-  authNotifier = new EventEmitter()
+  authNotifier = new Vue()
   defaultRedirectPath = '/';
 
   constructor () {
@@ -49,10 +49,10 @@ export default class AuthService {
         this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
           // Now you have the user's information
           this.setUserProfile(user);
+          this.setSession(authResult)
+          this.authenticated = this.isAuthenticated();
+          router.replace(localStorage.getItem('nextRedirect') || this.defaultRedirectPath)
         });
-        this.setSession(authResult)
-        this.authenticated = this.isAuthenticated();
-        router.replace(localStorage.getItem('nextRedirect') || this.defaultRedirectPath)
       } else if (err) {
         router.replace(localStorage.getItem('nextRedirect') || this.defaultRedirectPath)
         console.log(err)
@@ -73,7 +73,7 @@ export default class AuthService {
     localStorage.setItem('access_token', authResult.accessToken)
     localStorage.setItem('id_token', authResult.idToken)
     localStorage.setItem('expires_at', expiresAt)
-    this.authNotifier.emit('authChange', { authenticated: true })
+    this.authNotifier.$emit('authChange', { authenticated: true })
   }
 
   logout () {
@@ -83,7 +83,7 @@ export default class AuthService {
     localStorage.removeItem('expires_at')
     localStorage.removeItem('user_profile')
     this.userProfile = null
-    this.authNotifier.emit('authChange', false)
+    this.authNotifier.$emit('authChange', false)
     this.authenticated = this.isAuthenticated();
     // navigate to the home route
     router.replace('/')

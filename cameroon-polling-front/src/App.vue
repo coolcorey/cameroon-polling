@@ -33,7 +33,8 @@ export default {
     UserRegistration
   },
   data(){
-    authNotifier.on('authChange', authState => {
+    authNotifier.$on('authChange', authState => {
+      console.log('works')
       this.authenticated = authState.authenticated
     })
     return {
